@@ -47,6 +47,8 @@
 # Automatic scene snapshots (keep the actual source scenes and their metadata)
 /Assets/SnakeArcade/Backups/
 /Assets/SnakeArcade/Backups.meta
+/Assets/HandTrackingMiniJeu/Backups/
+/Assets/HandTrackingMiniJeu/Backups.meta
 
 # Meta SDK developer-agent settings contain a generated local access token/IP.
 /Assets/Resources/DevAgentSettings.asset

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/HandTrackingMiniJeu/Scenes/HandTrackingMiniJeu.unity
+    guid: c93705a9723314f47999ec36c819cd2d
+  - enabled: 1
     path: Assets/SnakeArcade/Scenes/SnakeArcadeVR.unity
     guid: 0fd142f2a2927d2468cd415397f00ace
   - enabled: 1

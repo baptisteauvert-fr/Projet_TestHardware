@@ -4,7 +4,13 @@ Projet Unity **6000.6.8f1**, destiné à Meta Quest avec OpenXR.
 
 Meta XR All-in-One SDK **207.0.1** est installé via Unity Package Manager. Le manifeste et le verrouillage des packages permettent de restaurer le SDK et ses dépendances après un clonage.
 
-Les groupes Meta XR sont activés pour OpenXR (PC et Android). À la première importation dans Unity 6.6, laisser l'API Updater mettre à jour les anciennes références d'API du module audio si Unity le demande. Pour produire un APK Quest, installer aussi Android Build Support et ses outils SDK/NDK/OpenJDK depuis Unity Hub : ce module n'est pas présent sur le poste au moment de l'ajout du SDK Meta.
+Les groupes Meta XR sont activés pour OpenXR (PC et Android). À la première importation dans Unity 6.6, laisser l'API Updater mettre à jour les anciennes références d'API du module audio si Unity le demande. Android Build Support, SDK, NDK et OpenJDK sont installés sur le poste pour Unity 6000.6.8f1. Ces outils doivent aussi être installés via Unity Hub sur un autre poste pour générer un APK Quest.
+
+## Branche Hand-Tracking-MiniJeu
+
+Cette branche ajoute la scène `Assets/HandTrackingMiniJeu/Scenes/HandTrackingMiniJeu.unity` : écran de positions des mains Quest 3, table de six objets à saisir, mini-jeu de tri par couleur, borne Snake à droite et trois cibles au loin derrière le joueur avec tir par index/majeur et déclenchement au pouce. Elle devient la première scène de lancement sur cette branche. Les scènes Snake et du modèle VR restent disponibles.
+
+Voir [le guide Hand Tracking MiniJeu](Assets/HandTrackingMiniJeu/README.md).
 
 Dépôt GitHub privé : [baptisteauvert-fr/Projet_TestHardware](https://github.com/baptisteauvert-fr/Projet_TestHardware).
 
