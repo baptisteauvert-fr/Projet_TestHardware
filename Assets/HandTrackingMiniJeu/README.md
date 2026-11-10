@@ -6,7 +6,7 @@ Scène : `Assets/HandTrackingMiniJeu/Scenes/HandTrackingMiniJeu.unity`.
 ## Ce que contient la scène
 
 - Un rig XR avec suivi des mains OpenXR/XR Hands et prise en charge des contrôleurs.
-- Un écran affichant, pour chaque main, l'état de suivi, la position XYZ du poignet dans le monde (en mètres), la proximité du pouce et de l'index et une vue du dessus du squelette.
+- Un écran affichant, pour chaque main, l'état de suivi, la position XYZ du poignet dans le monde (en mètres), la proximité du pouce et de l'index et un squelette automatiquement centré dans le plan de la paume.
 - Une table avec six objets physiques à saisir par pincement, déplacer et relâcher.
 - Trois zones de tri : déposer les objets dans la zone de même couleur pour atteindre 6/6.
 - Un bouton physique Replacer ; la touche R remplit la même fonction dans l'éditeur.
@@ -18,7 +18,9 @@ Le pourcentage affiché mesure la proximité pouce/index ; ce n'est pas une prob
 
 ## Tir aux doigts et borne Snake
 
-Pour tirer, tourner sur soi afin de regarder les cibles derrière la position de départ. Tendre l'index et le majeur, replier l'annulaire et l'auriculaire, puis relever le pouce en l'éloignant de l'index. Maintenir brièvement cette pose pour armer, puis rabattre le pouce vers la main : un seul tir part. Relever de nouveau le pouce pour armer le tir suivant. Les deux mains sont prises en charge. La direction du tir suit les deux doigts tendus.
+Pour tirer, tourner sur soi afin de regarder les cibles derrière la position de départ. Tendre l'index et le majeur : un canon futuriste orange apparaît sur la main. Les deux autres doigts ne bloquent pas la reconnaissance. Relever le pouce en l'éloignant des doigts tendus : le canon devient vert lorsqu'il est armé. Rabattre ensuite le pouce vers la main : un seul tir part, avec flash et recul du canon. Relever de nouveau le pouce pour armer le tir suivant. Les deux mains sont prises en charge. Le rayon de visée et le viseur sur la cible indiquent exactement la direction du prochain tir.
+
+Le seuil de tir s'adapte à la position du pouce levé ; il n'est plus nécessaire de fermer complètement le pouce. La mesure ignore la distance le long de l'index. Les mouvements de visée sont lissés, et une perte de suivi masque immédiatement le canon et désarme la main.
 
 Le centre rapporte 10 points, l'anneau intermédiaire 5 et le bord 2. Les points gagnés apparaissent au-dessus de la cible touchée. Une perte de suivi ou une pose incorrecte désarme la main sans tirer. Le bouton Replacer de la table remet également les scores des cibles à zéro.
 
@@ -56,9 +58,12 @@ Menus Unity : `Tools > Hand Tracking MiniJeu`.
 - Build Quest 3 APK : passer à la cible Android et générer `Builds/Quest3/HandTrackingMiniJeu.apk` avec cette seule scène. Le fichier reste local et est exclu de Git.
 - Add Arcade and Finger Targets : ajouter les deux zones à une scène HandTrackingMiniJeu existante. La création complète les inclut également.
 - Check Finger Gun Rules et Check Target Hits : vérifier l'armement, le déclenchement, la perte de suivi, les rayons, les zones de points et l'affichage au-dessus des cibles.
+- Check Cannon Feedback : vérifier le déclenchement avec un abaissement partiel du pouce, le réarmement, la mesure du pouce et le cadrage des mains après déplacement et rotation.
 
 Les rapports de contrôle et rendus locaux sont placés sous `Tools/Integrations` et exclus de Git. Les vérifications simulées ne remplacent pas un essai avec le Quest 3.
 
 Contrôle du 10 novembre 2026 : 39 vérifications réussies sur la scène complète (câblage, saisie XR simulée, déplacement et relâchement, suivi affiché et perte de suivi, tri, remise à zéro, armement du pouce, absence de tirs répétés, Snake, rayons et points sur les cibles).
 
 APK Android généré avec succès le 10 novembre 2026, sans erreur : `Builds/Quest3/HandTrackingMiniJeu.apk` (environ 76 Mio). Le paquet ARM64, les déclarations de suivi des mains et la signature APK v2 ont été vérifiés. Aucun casque n'était connecté pour un essai réel.
+
+Essai ultérieur sur Quest 3 : installation et lancement réussis, scène visible et saisie d'objets confirmées par l'utilisateur. Après ce premier essai, le tir a été assoupli et doté d'un canon avec retour visuel ; l'écran des mains utilise désormais un cadrage automatique. Les nouveaux contrôles couvrent également le tir avec un pouce partiellement abaissé et le maintien des articulations dans le cadre après rotation et déplacement.

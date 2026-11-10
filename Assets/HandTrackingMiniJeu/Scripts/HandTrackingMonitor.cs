@@ -19,6 +19,7 @@ namespace HandTrackingMiniJeu
         readonly List<XRHandSubsystem> subsystems = new List<XRHandSubsystem>();
         readonly Vector3[] jointPositions = new Vector3[26];
         readonly bool[] jointValid = new bool[26];
+        readonly Vector2Int[] projectedJoints = new Vector2Int[26];
         readonly Texture2D[] textures = new Texture2D[2];
         readonly Color32[][] pixels = new Color32[2][];
         XRHandSubsystem subsystem;
@@ -105,13 +106,15 @@ namespace HandTrackingMiniJeu
                 text.color = ink;
                 if (joints != null && valid != null)
                 {
+                    ProjectHand(joints, valid, projectedJoints);
                     foreach (var finger in Fingers)
                         for (int j = 1; j < finger.Length; j++)
                             if (valid[finger[j - 1]] && valid[finger[j]])
-                                Line(target, Project(joints[finger[j - 1]]), Project(joints[finger[j]]), ink);
-                    for (int i = 0; i < Mathf.Min(26, joints.Length); i++) if (valid[i]) Dot(target, Project(joints[i]), 2, ink);
+                                Line(target, projectedJoints[finger[j - 1]], projectedJoints[finger[j]], ink);
+                    for (int i = 0; i < Mathf.Min(26, joints.Length); i++) if (valid[i]) Dot(target, projectedJoints[i], 3, ink);
+                    if(valid[0]) Dot(target, projectedJoints[0], 5, new Color32(240,250,255,255));
                 }
-                Dot(target, Project(trackingPosition), 5, new Color32(240, 250, 255, 255));
+                else Dot(target, new Vector2Int(128,128), 5, new Color32(240,250,255,255));
             }
             textures[handIndex].SetPixels32(target); textures[handIndex].Apply(false);
         }
@@ -119,6 +122,31 @@ namespace HandTrackingMiniJeu
         public static Vector3 TrackingToWorld(Transform origin, Vector3 local) => origin != null ? origin.TransformPoint(local) : local;
         public static Vector2Int Project(Vector3 trackingPosition)
             => new Vector2Int(Mathf.RoundToInt((trackingPosition.x / 1.5f + 0.5f) * 255), Mathf.RoundToInt(trackingPosition.z / 1.4f * 255));
+        // Fit the complete skeleton in its own palm plane. World XYZ remains in the readout.
+        public static void ProjectHand(Vector3[] joints,bool[] valid,Vector2Int[] output)
+        {
+            Vector3 up=Vector3.forward,right=Vector3.right;
+            if(valid[0] && valid[6] && valid[12] && valid[21])
+            {
+                var axis=joints[12]-joints[0];
+                var width=Vector3.ProjectOnPlane(joints[6]-joints[21],axis.normalized);
+                if(axis.sqrMagnitude>0.00001f && width.sqrMagnitude>0.00001f){up=axis.normalized;right=width.normalized;}
+            }
+            Vector2 min=new Vector2(float.MaxValue,float.MaxValue),max=new Vector2(float.MinValue,float.MinValue);
+            int count=Mathf.Min(26,Mathf.Min(joints.Length,valid.Length));bool any=false;
+            for(int i=0;i<count;i++)if(valid[i])
+            {
+                var p=new Vector2(Vector3.Dot(joints[i],right),Vector3.Dot(joints[i],up));
+                min=Vector2.Min(min,p);max=Vector2.Max(max,p);any=true;
+            }
+            var center=any?(min+max)*0.5f:Vector2.zero;
+            float scale=208f/Mathf.Max(0.12f,max.x-min.x,max.y-min.y);
+            for(int i=0;i<count;i++)if(valid[i])
+            {
+                var p=new Vector2(Vector3.Dot(joints[i],right),Vector3.Dot(joints[i],up));
+                output[i]=new Vector2Int(Mathf.RoundToInt(127.5f+(p.x-center.x)*scale),Mathf.RoundToInt(127.5f+(p.y-center.y)*scale));
+            }
+        }
         static void Dot(Color32[] target, Vector2Int point, int radius, Color32 color)
         {
             for (int y = -radius; y <= radius; y++) for (int x = -radius; x <= radius; x++)
