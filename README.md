@@ -2,6 +2,10 @@
 
 Projet Unity **6000.6.8f1**, destiné à Meta Quest avec OpenXR.
 
+Meta XR All-in-One SDK **207.0.1** est installé via Unity Package Manager. Le manifeste et le verrouillage des packages permettent de restaurer le SDK et ses dépendances après un clonage.
+
+Les groupes Meta XR sont activés pour OpenXR (PC et Android). À la première importation dans Unity 6.6, laisser l'API Updater mettre à jour les anciennes références d'API du module audio si Unity le demande. Pour produire un APK Quest, installer aussi Android Build Support et ses outils SDK/NDK/OpenJDK depuis Unity Hub : ce module n'est pas présent sur le poste au moment de l'ajout du SDK Meta.
+
 Dépôt GitHub privé : [baptisteauvert-fr/Projet_TestHardware](https://github.com/baptisteauvert-fr/Projet_TestHardware).
 
 ## Ouvrir le projet

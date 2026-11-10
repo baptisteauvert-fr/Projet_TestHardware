@@ -31,6 +31,9 @@
 /sysinfo.txt
 /crash.dmp
 /mono_crash.*
+/RuntimeActionBindings.json
+/Assets/StreamingAssets/RuntimeActionBindings.json
+/Assets/StreamingAssets/RuntimeActionBindings.json.meta
 
 # Local integrations: downloaded apps, cloned servers, virtual environments,
 # captures, request payloads and machine-specific diagnostic reports.
@@ -44,6 +47,10 @@
 # Automatic scene snapshots (keep the actual source scenes and their metadata)
 /Assets/SnakeArcade/Backups/
 /Assets/SnakeArcade/Backups.meta
+
+# Meta SDK developer-agent settings contain a generated local access token/IP.
+/Assets/Resources/DevAgentSettings.asset
+/Assets/Resources/DevAgentSettings.asset.meta
 
 # Python caches and local configuration/credentials
 __pycache__/
