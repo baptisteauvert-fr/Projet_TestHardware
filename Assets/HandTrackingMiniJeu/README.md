@@ -43,6 +43,8 @@ Le Quest doit être configuré en mode développeur et autoriser le débogage US
 
 Pour les itérations du mini-jeu, utiliser Quest Link et le bouton Play, sans générer d'APK. Sur le PC, Meta Horizon Link doit être le moteur OpenXR actif et ses fonctions développeur doivent autoriser le suivi des mains. Dans le casque, lancer Quest Link vers ce PC avant de cliquer sur Play. Le branchement USB seul n'active pas la session PC VR. Les réglages OpenXR et XR Hands sont également activés pour la plateforme PC de ce projet.
 
+Attention à la différence avec Écran virtuel / Remote Desktop : voir le bureau de Windows dans le casque ne suffit pas à établir une session PC VR. Le client Quest Link PC VR doit être ouvert. Le projet est maintenant placé sur la plateforme PC pour ce mode de test.
+
 Si des fonctions développeur de Link sont activées pour la première fois, Meta recommande de redémarrer l'éditeur. Référence : [Link pour le développement](https://developers.meta.com/vr/documentation/unity/unity-link/).
 
 ## Configuration du projet
@@ -75,3 +77,5 @@ APK Android généré avec succès le 10 novembre 2026, sans erreur : `Builds/Qu
 Essai ultérieur sur Quest 3 : installation et lancement réussis, scène visible et saisie d'objets confirmées par l'utilisateur. Après ce premier essai, le tir a été assoupli et doté d'un canon avec retour visuel ; l'écran des mains utilise désormais un cadrage automatique. Les nouveaux contrôles couvrent également le tir avec un pouce partiellement abaissé et le maintien des articulations dans le cadre après rotation et déplacement.
 
 Le test de la version avec canon se poursuit désormais avec Quest Link et Play dans l'éditeur, à la demande de l'utilisateur. L'APK installé précédemment ne contient pas encore ces corrections. Une recompilation propre des scripts a résolu l'erreur de liaison gRPC du traitement ILPP ; l'entrée en mode Play a ensuite été vérifiée.
+
+Diagnostic PC VR du 10 novembre 2026 : après lancement du client Quest Link et démarrage des sous-systèmes XR, Unity confirme le moteur Oculus, l'affichage XR actif et le sous-système de suivi des mains en cours d'exécution. L'application Écran virtuel seule n'avait pas exposé le casque à OpenXR. Le rendu réel reste à valider : la session Link n'avait ensuite transmis aucune pose ni passe de rendu et affichait une image noire. Les fonctions développeur ont été activées par l'utilisateur ; Sources inconnues et le moteur OpenXR Meta étaient déjà activés. La batterie du casque était descendue à 3 % pendant ce diagnostic. Les nouvelles interactions avec canon ne sont donc pas encore confirmées sur casque.
