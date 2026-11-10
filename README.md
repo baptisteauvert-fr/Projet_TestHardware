@@ -2,6 +2,8 @@
 
 Projet Unity **6000.6.8f1**, destiné à Meta Quest avec OpenXR.
 
+Dépôt GitHub privé : [baptisteauvert-fr/Projet_TestHardware](https://github.com/baptisteauvert-fr/Projet_TestHardware).
+
 ## Ouvrir le projet
 
 1. Cloner le dépôt et ajouter son dossier dans Unity Hub.
@@ -36,6 +38,7 @@ La branche principale est `main`. Les modifications futures peuvent être sauveg
 git status
 git add Assets Packages ProjectSettings README.md .gitignore .gitattributes
 git commit -m "Décrire la modification"
+git push
 ```
 
-Ne pas ignorer tous les fichiers `.meta` ni `Packages/packages-lock.json` : ils font partie du projet. Aucun dépôt distant n'est configuré automatiquement.
+Ne pas ignorer tous les fichiers `.meta` ni `Packages/packages-lock.json` : ils font partie du projet. Le dépôt distant `origin` pointe vers le dépôt GitHub privé indiqué ci-dessus.
