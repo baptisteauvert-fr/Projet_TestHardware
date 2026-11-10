@@ -60,3 +60,5 @@ Menus Unity : `Tools > Hand Tracking MiniJeu`.
 Les rapports de contrôle et rendus locaux sont placés sous `Tools/Integrations` et exclus de Git. Les vérifications simulées ne remplacent pas un essai avec le Quest 3.
 
 Contrôle du 10 novembre 2026 : 39 vérifications réussies sur la scène complète (câblage, saisie XR simulée, déplacement et relâchement, suivi affiché et perte de suivi, tri, remise à zéro, armement du pouce, absence de tirs répétés, Snake, rayons et points sur les cibles).
+
+APK Android généré avec succès le 10 novembre 2026, sans erreur : `Builds/Quest3/HandTrackingMiniJeu.apk` (environ 76 Mio). Le paquet ARM64, les déclarations de suivi des mains et la signature APK v2 ont été vérifiés. Aucun casque n'était connecté pour un essai réel.
