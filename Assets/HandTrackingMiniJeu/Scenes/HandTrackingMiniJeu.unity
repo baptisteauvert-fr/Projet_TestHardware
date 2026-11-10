@@ -5331,7 +5331,7 @@ GameObject:
   - component: {fileID: 793008649}
   - component: {fileID: 793008648}
   m_Layer: 0
-  m_Name: VUE DU DESSUS / X-Z / REPERE JOUEUR
+  m_Name: PAUME / CADRAGE AUTOMATIQUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5389,7 +5389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VUE DU DESSUS / X-Z / REPERE JOUEUR
+  m_Text: PAUME / CADRAGE AUTOMATIQUE
 --- !u!222 &793008649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6088,7 +6088,7 @@ GameObject:
   - component: {fileID: 890728727}
   - component: {fileID: 890728726}
   m_Layer: 0
-  m_Name: VUE DU DESSUS / X-Z / REPERE JOUEUR
+  m_Name: PAUME / CADRAGE AUTOMATIQUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6146,7 +6146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VUE DU DESSUS / X-Z / REPERE JOUEUR
+  m_Text: PAUME / CADRAGE AUTOMATIQUE
 --- !u!222 &890728727
 CanvasRenderer:
   m_ObjectHideFlags: 0

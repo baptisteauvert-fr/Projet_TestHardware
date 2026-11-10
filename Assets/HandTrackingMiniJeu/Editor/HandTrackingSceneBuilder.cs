@@ -108,7 +108,7 @@ namespace HandTrackingMiniJeu.Editor
                 var raw=new GameObject("Live skeleton " + i,typeof(RectTransform),typeof(RawImage)).GetComponent<RawImage>();raw.transform.SetParent(screen,false);
                 Rect(raw.rectTransform,new Vector2(x,470),new Vector2(620,300));raw.color=Color.white;raw.raycastTarget=false;
                 raw.texture=GridPreview();
-                Text(screen,"VUE DU DESSUS / X-Z / REPERE JOUEUR",new Vector2(x,295),new Vector2(620,32),17,new Color(0.56f,0.68f,0.77f));
+                Text(screen,"PAUME / CADRAGE AUTOMATIQUE",new Vector2(x,295),new Vector2(620,32),17,new Color(0.56f,0.68f,0.77f));
                 var readout=Text(screen,"NON SUIVIE\nX  --     Y  --     Z  --\nPINCEMENT  --",new Vector2(x,230),new Vector2(630,105),23,new Color(0.65f,0.75f,0.84f));
                 if(i==0){monitor.leftImage=raw;monitor.leftReadout=readout;}else{monitor.rightImage=raw;monitor.rightReadout=readout;}
             }

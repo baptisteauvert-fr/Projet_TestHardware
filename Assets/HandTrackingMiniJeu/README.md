@@ -39,6 +39,12 @@ Les données de mains sont affichées localement. Aucun enregistrement ni envoi 
 
 Le Quest doit être configuré en mode développeur et autoriser le débogage USB pour un déploiement ADB. Ces réglages et confirmations doivent être effectués par son propriétaire sur le casque. Un essai sur casque réel reste nécessaire pour valider le confort et la qualité de suivi.
 
+### Test habituel : Quest Link et Play dans Unity
+
+Pour les itérations du mini-jeu, utiliser Quest Link et le bouton Play, sans générer d'APK. Sur le PC, Meta Horizon Link doit être le moteur OpenXR actif et ses fonctions développeur doivent autoriser le suivi des mains. Dans le casque, lancer Quest Link vers ce PC avant de cliquer sur Play. Le branchement USB seul n'active pas la session PC VR. Les réglages OpenXR et XR Hands sont également activés pour la plateforme PC de ce projet.
+
+Si des fonctions développeur de Link sont activées pour la première fois, Meta recommande de redémarrer l'éditeur. Référence : [Link pour le développement](https://developers.meta.com/vr/documentation/unity/unity-link/).
+
 ## Configuration du projet
 
 Meta XR All-in-One SDK 207.0.1, XR Hands 1.9.0, XR Interaction Toolkit 3.6.1, OpenXR 1.18.0 et Unity OpenXR Meta 2.6.1 sont présents. Les fonctionnalités Hand Tracking et Meta Hand Tracking Aim sont activées. Le réglage Meta autorise les contrôleurs et les mains.
@@ -67,3 +73,5 @@ Contrôle du 10 novembre 2026 : 39 vérifications réussies sur la scène compl�
 APK Android généré avec succès le 10 novembre 2026, sans erreur : `Builds/Quest3/HandTrackingMiniJeu.apk` (environ 76 Mio). Le paquet ARM64, les déclarations de suivi des mains et la signature APK v2 ont été vérifiés. Aucun casque n'était connecté pour un essai réel.
 
 Essai ultérieur sur Quest 3 : installation et lancement réussis, scène visible et saisie d'objets confirmées par l'utilisateur. Après ce premier essai, le tir a été assoupli et doté d'un canon avec retour visuel ; l'écran des mains utilise désormais un cadrage automatique. Les nouveaux contrôles couvrent également le tir avec un pouce partiellement abaissé et le maintien des articulations dans le cadre après rotation et déplacement.
+
+Le test de la version avec canon se poursuit désormais avec Quest Link et Play dans l'éditeur, à la demande de l'utilisateur. L'APK installé précédemment ne contient pas encore ces corrections. Une recompilation propre des scripts a résolu l'erreur de liaison gRPC du traitement ILPP ; l'entrée en mode Play a ensuite été vérifiée.
